@@ -5,4 +5,12 @@ CONFIG -= qt
 LIBS += -lGL -lGLU -lglut
 
 SOURCES += \
-    main.cpp
+    main.cpp \
+    infraestrutura/cilindro.cpp \
+    infraestrutura/utilitarios/excecao.cpp \
+    infraestrutura/objeto3D.cpp
+
+HEADERS += \
+    infraestrutura/cilindro.h \
+    infraestrutura/utilitarios/excecao.h \
+    infraestrutura/objeto3D.h
