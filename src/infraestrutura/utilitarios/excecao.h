@@ -18,7 +18,7 @@ public:
     void set_mensagem(string mensagem);
 
 private:
-    string mensagem;
+    string _mensagem;
 };
 
 }

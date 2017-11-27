@@ -8,9 +8,11 @@ SOURCES += \
     main.cpp \
     infraestrutura/cilindro.cpp \
     infraestrutura/utilitarios/excecao.cpp \
-    infraestrutura/objeto3D.cpp
+    infraestrutura/objeto3D.cpp \
+    infraestrutura/janela.cpp
 
 HEADERS += \
     infraestrutura/cilindro.h \
     infraestrutura/utilitarios/excecao.h \
-    infraestrutura/objeto3D.h
+    infraestrutura/objeto3D.h \
+    infraestrutura/janela.h

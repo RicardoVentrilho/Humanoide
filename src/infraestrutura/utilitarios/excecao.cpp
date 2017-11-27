@@ -7,10 +7,10 @@ infraestrutura::Excecao::Excecao(string mensagem)
 
 string infraestrutura::Excecao::get_mensagem()
 {
-    return mensagem;
+    return _mensagem;
 }
 
 void infraestrutura::Excecao::set_mensagem(string mensagem)
 {
-    this->mensagem = mensagem;
+    _mensagem = mensagem;
 }
