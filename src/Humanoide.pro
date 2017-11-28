@@ -12,7 +12,8 @@ SOURCES += \
     infraestrutura/objeto3DComFuncoes.cpp \
     negocio/junta.cpp \
     negocio/osso.cpp \
-    infraestrutura/perspectiva.cpp
+    infraestrutura/perspectiva.cpp \
+    infraestrutura/coordenada.cpp
 
 HEADERS += \
     infraestrutura/utilitarios/excecao.h \
@@ -22,4 +23,5 @@ HEADERS += \
     negocio/junta.h \
     negocio/osso.h \
     infraestrutura/perspectiva.h \
-    infraestrutura/configuracoes.h
+    infraestrutura/configuracoes.h \
+    infraestrutura/coordenada.h

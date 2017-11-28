@@ -39,7 +39,7 @@ void ao_click_do_mouse(int, int, int, int)
     cerr << "Clicou!" << endl;
 }
 
-void ao_mover_mouse(int x, int y)
+void ao_mover_mouse(int, int)
 {
     cerr << "Moveu!" << endl;
 }

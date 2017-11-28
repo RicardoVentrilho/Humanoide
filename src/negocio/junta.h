@@ -4,7 +4,9 @@
 #include <vector>
 
 #include "osso.h"
+#include "infraestrutura/coordenada.h"
 
+using namespace infraestrutura;
 using std::vector;
 
 namespace negocio
@@ -13,11 +15,15 @@ namespace negocio
 class Junta
 {
 public:
-    Junta();
+    Junta(int x, int y, int z);
+    ~Junta();
+    void adicione_junta(Junta* junta_filha);
+    Coordenada* get_posicao();
 
 private:
-    vector<Junta*> juntas_adjacentes;
-    vector<Osso*> ossos;
+    vector<Junta*> _juntas_adjacentes;
+    vector<Osso*> _ossos;
+    Coordenada* _posicao;
 };
 
 }
