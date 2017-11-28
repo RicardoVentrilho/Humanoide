@@ -2,6 +2,8 @@
 #define HUMANOIDE_H
 
 #include "infraestrutura/objeto3DComFuncoes.h"
+#include "junta.h"
+#include "osso.h"
 
 using namespace infraestrutura;
 

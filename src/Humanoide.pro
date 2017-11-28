@@ -9,10 +9,14 @@ SOURCES += \
     infraestrutura/utilitarios/excecao.cpp \
     infraestrutura/janela.cpp \
     negocio/humanoide.cpp \
-    infraestrutura/objeto3DComFuncoes.cpp
+    infraestrutura/objeto3DComFuncoes.cpp \
+    negocio/junta.cpp \
+    negocio/osso.cpp
 
 HEADERS += \
     infraestrutura/utilitarios/excecao.h \
     infraestrutura/janela.h \
     negocio/humanoide.h \
-    infraestrutura/objeto3DComFuncoes.h
+    infraestrutura/objeto3DComFuncoes.h \
+    negocio/junta.h \
+    negocio/osso.h
