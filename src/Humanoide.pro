@@ -1,16 +1,22 @@
 TEMPLATE = app
-CONFIG += console c++11
+CONFIG += console c++14
 CONFIG -= app_bundle
 CONFIG -= qt
 LIBS += -lGL -lGLU -lglut
 
 SOURCES += \
     main.cpp \
-    infraestrutura/cilindro.cpp \
     infraestrutura/utilitarios/excecao.cpp \
-    infraestrutura/objeto3D.cpp
+    infraestrutura/janela.cpp \
+    negocio/humanoide.cpp \
+    infraestrutura/objeto3DComFuncoes.cpp \
+    negocio/junta.cpp \
+    negocio/osso.cpp
 
 HEADERS += \
-    infraestrutura/cilindro.h \
     infraestrutura/utilitarios/excecao.h \
-    infraestrutura/objeto3D.h
+    infraestrutura/janela.h \
+    negocio/humanoide.h \
+    infraestrutura/objeto3DComFuncoes.h \
+    negocio/junta.h \
+    negocio/osso.h
