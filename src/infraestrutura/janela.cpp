@@ -4,13 +4,13 @@ infraestrutura::Janela::Janela(int altura, int largura, string titulo)
     : _altura(altura), _largura(largura), _titulo(titulo)
 {
     int argc = 0;
-    char *argv = "";
+    char *argv;
     glutInit(&argc, &argv);
 
     glutInitDisplayMode(GLUT_STENCIL|GLUT_DEPTH|GLUT_DOUBLE);
     glutInitWindowPosition(0, 0);
     glutInitWindowSize(_altura, _largura);
-    glutCreateWindow("Humanoide");
+    glutCreateWindow(titulo.c_str());
 }
 
 void infraestrutura::Janela::set_objeto(Objeto3DComFuncoes *objeto)
