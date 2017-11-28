@@ -2,7 +2,6 @@
 
 negocio::Humanoide::Humanoide()
 {
-
 }
 
 void negocio::Humanoide::set_desenhe(void (*funcao)())
