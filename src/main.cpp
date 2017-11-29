@@ -10,28 +10,11 @@ using namespace std;
 using namespace infraestrutura;
 using namespace negocio;
 
+Humanoide* humanoide = new Humanoide(0, 30, 0);
+
 void desenhe()
 {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-
-    glPushMatrix();
-    glRotatef(30, 0.f, 1.f, 0.f);
-
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    glRotatef(1, 1, 0, 0);
-    glRotatef(1, 0, 1, 0);
-    glRotatef(1, 0, 0, 1);
-
-    glPushMatrix();
-    glColor3f(0, 0, 1);
-    glTranslatef(0, 0, 0);
-    glutSolidSphere(4, 40, 40);
-
-    glPopMatrix();
-    glutSwapBuffers();
-
-    cerr << "Desenhe!" << endl;
+    humanoide->desenhe();
 }
 
 void ao_click_do_mouse(int, int, int, int)
@@ -58,10 +41,8 @@ int main()
 {
     try
     {
-        Janela* janela = new Janela(500, 500, "Título");
+        Janela* janela = new Janela(500, 500, "Computação Gráfica");
         Perspectiva* perspectiva = new Perspectiva(50);
-
-        Humanoide* humanoide = new Humanoide();
 
         humanoide->set_desenhe(desenhe);
         humanoide->set_evento_clicar_mouse(ao_click_do_mouse);

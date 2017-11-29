@@ -2,6 +2,7 @@
 #define JUNTA_H
 
 #include <vector>
+#include <GL/glut.h>
 
 #include "osso.h"
 #include "infraestrutura/coordenada.h"
@@ -19,11 +20,17 @@ public:
     ~Junta();
     void adicione_junta(Junta* junta_filha);
     Coordenada* get_posicao();
+    void desenhe();
+    vector<Junta*> get_juntas_adjacentes();
 
 private:
     vector<Junta*> _juntas_adjacentes;
     vector<Osso*> _ossos;
     Coordenada* _posicao;
+    bool _esta_selecionado;
+    void desenhe_opengl();
+    void desenhe_recursivo(Junta* junta);
+    void desenhe_ossos();
 };
 
 }

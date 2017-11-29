@@ -11,6 +11,7 @@ infraestrutura::Janela::Janela(int altura, int largura, string titulo)
     glutInitWindowPosition(0, 0);
     glutInitWindowSize(_altura, _largura);
     glutCreateWindow(titulo.c_str());
+    glClearColor(1, 1, 1, 0);
 }
 
 infraestrutura::Janela::~Janela()

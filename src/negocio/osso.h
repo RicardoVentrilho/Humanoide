@@ -1,6 +1,8 @@
 #ifndef OSSO_H
 #define OSSO_H
 
+#include <GL/glut.h>
+#include <GL/gl.h>
 #include "infraestrutura/coordenada.h"
 
 using namespace infraestrutura;
@@ -15,6 +17,7 @@ public:
     ~Osso();
     Coordenada* get_posicao_incial();
     Coordenada* get_posicao_final();
+    void desenhe();
 
 private:
     Coordenada* _posicao_inicial;
