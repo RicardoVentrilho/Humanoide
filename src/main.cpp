@@ -1,12 +1,14 @@
 #include <iostream>
 
+#include "compartilhado.h"
+#include "enumeradores/enummembros.h"
 #include "infraestrutura/utilitarios/excecao.h"
 #include "infraestrutura/janela.h"
 #include "infraestrutura/perspectiva.h"
 #include "negocio/humanoide.h"
 
-
 using namespace std;
+using namespace enumeradores;
 using namespace infraestrutura;
 using namespace negocio;
 
@@ -37,12 +39,21 @@ void ao_clicar_tecla_especial(int, int, int)
     cerr << "Tecla especial!" << endl;
 }
 
+void funcao_do_menu(int operacao)
+{
+    OPERACAO_EXECUTADA_DO_MENU = operacao;
+    glutPostRedisplay();
+}
+
 int main()
 {
     try
     {
         Janela* janela = new Janela(500, 500, "Computação Gráfica");
         Perspectiva* perspectiva = new Perspectiva(50);
+        Menu* menu = new Menu(funcao_do_menu);
+
+        janela->adicione_itens_no_menu(menu);
 
         humanoide->set_desenhe(desenhe);
         humanoide->set_evento_clicar_mouse(ao_click_do_mouse);

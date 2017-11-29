@@ -16,11 +16,10 @@ infraestrutura::Janela::Janela(int altura, int largura, string titulo)
 
 infraestrutura::Janela::~Janela()
 {
-    delete _objeto;
     delete _perspectiva;
 }
 
-void infraestrutura::Janela::set_objeto(Objeto3DComFuncoes *objeto)
+void infraestrutura::Janela::set_objeto(ObjetoComFuncoesOpenGL *objeto)
 {
     glutDisplayFunc(objeto->get_desenhe);
     glutMouseFunc(objeto->get_evento_mouse_click);
@@ -29,7 +28,7 @@ void infraestrutura::Janela::set_objeto(Objeto3DComFuncoes *objeto)
     glutSpecialFunc(objeto->get_evento_clicar_tecla_especial);
 }
 
-void infraestrutura::Janela::set_perspectiva(infraestrutura::Perspectiva *perspectiva)
+void infraestrutura::Janela::set_perspectiva(Perspectiva *perspectiva)
 {
     _perspectiva = perspectiva;
 }
@@ -57,4 +56,25 @@ void infraestrutura::Janela::aplique_configuracao_padrao()
 void infraestrutura::Janela::loop()
 {
     glutMainLoop();
+}
+
+void infraestrutura::Janela::adicione_itens_no_menu(infraestrutura::Menu *menu)
+{
+    menu->adicione_item("Cabeca", CABECA);
+    menu->adicione_item("Pescoco", PESCOCO);
+    menu->adicione_item("Tronco", TRONCO);
+    menu->adicione_item("Braco Direito", BRACO_DIREITO);
+    menu->adicione_item("Braco Esquerdo", BRACO_ESQUERDO);
+    menu->adicione_item("Antebraco Direito", ANTEBRACO_DIREITO);
+    menu->adicione_item("Antebraco Esquerdo", ANTEBRACO_ESQUERDO);
+    menu->adicione_item("Ilio Direito", ILIO_DIREITO);
+    menu->adicione_item("Ilio Esquerdo", ILIO_ESQUERDO);
+    menu->adicione_item("Coxa Direita", COXA_DIREITA);
+    menu->adicione_item("Coxa Esquerda", COXA_ESQUERDA);
+    menu->adicione_item("Canela Direita", CANELA_DIREITA);
+    menu->adicione_item("Canela Esquerda", CANELA_ESQUERDA);
+    menu->adicione_item("Pe Direito", PE_DIREITO);
+    menu->adicione_item("Pe Esquerdo", PE_ESQUERDO);
+
+    menu->adicione_evento(GLUT_RIGHT_BUTTON);
 }

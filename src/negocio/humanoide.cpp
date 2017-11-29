@@ -5,11 +5,6 @@ negocio::Humanoide::Humanoide(int x, int y, int z)
     cria_esqueleto(x, y, z);
 }
 
-negocio::Junta *negocio::Humanoide::get_raiz()
-{
-    return _raiz;
-}
-
 void negocio::Humanoide::set_desenhe(void (*funcao)())
 {
     get_desenhe = funcao;
@@ -39,55 +34,63 @@ void negocio::Humanoide::desenhe()
 {
      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-    _raiz->desenhe();
+    _cabeca->desenhe();
 
     glutSwapBuffers();
 }
 
 void negocio::Humanoide::cria_esqueleto(int x, int y, int z)
 {
-    auto cabeca = new Junta(x, 10 + y, z);
+    _cabeca = new Junta(x, 10 + y, z);
 
-    auto pescoco = new Junta(x, y, z);
+    _pescoco = new Junta(x, y, z);
 
-    cabeca->adicione_junta(pescoco);
+    _cabeca->adicione_junta(_pescoco);
 
-    auto braco_esquerdo = new Junta(-10 + x, -5 + y, z);
-    auto braco_direito = new Junta(10 + x, -5 + y, z);
+    _braco_esquerdo = new Junta(-10 + x, -5 + y, z);
+    _braco_direito = new Junta(10 + x, -5 + y, z);
 
-    braco_esquerdo->adicione_junta(new Junta(-20 + x, y, z));
-    braco_direito->adicione_junta(new Junta(20 + x, y, z));
+    _braco_esquerdo->adicione_junta(new Junta(-20 + x, y, z));
+    _braco_direito->adicione_junta(new Junta(20 + x, y, z));
 
-    pescoco->adicione_junta(braco_esquerdo);
-    pescoco->adicione_junta(braco_direito);
+    _pescoco->adicione_junta(_braco_esquerdo);
+    _pescoco->adicione_junta(_braco_direito);
 
-    auto tronco = new Junta(x, -25 + y, z);
+    _tronco = new Junta(x, -25 + y, z);
 
-    pescoco->adicione_junta(tronco);
+    _pescoco->adicione_junta(_tronco);
 
-    auto ilio_esquerdo = new Junta(-5 + x, -25 + y, z);
-    auto ilio_direito = new Junta(5 + x, -25 + y, z);
+    _ilio_esquerdo = new Junta(-5 + x, -25 + y, z);
+    _ilio_direito = new Junta(5 + x, -25 + y, z);
 
-    tronco->adicione_junta(ilio_esquerdo);
-    tronco->adicione_junta(ilio_direito);
+    _tronco->adicione_junta(_ilio_esquerdo);
+    _tronco->adicione_junta(_ilio_direito);
 
-    auto femur_esquerdo = new Junta(-5 + x, -40 + y, z);
-    auto femur_direito = new Junta(5 + x, -40 + y, z);
+    _coxa_esquerda = new Junta(-5 + x, -40 + y, z);
+    _coxa_direita = new Junta(5 + x, -40 + y, z);
 
-    ilio_esquerdo->adicione_junta(femur_esquerdo);
-    ilio_direito->adicione_junta(femur_direito);
+    _ilio_esquerdo->adicione_junta(_coxa_esquerda);
+    _ilio_direito->adicione_junta(_coxa_direita);
 
-    auto tibia_esquerdo = new Junta(-5 + x, -55 + y, z);
-    auto tibia_direito = new Junta(5 + x, -55 + y, z);
+    _canela_esquerda = new Junta(-5 + x, -55 + y, z);
+    _canela_direita = new Junta(5 + x, -55 + y, z);
 
-    ilio_esquerdo->adicione_junta(tibia_esquerdo);
-    ilio_direito->adicione_junta(tibia_direito);
+    _ilio_esquerdo->adicione_junta(_canela_esquerda);
+    _ilio_direito->adicione_junta(_canela_direita);
 
-    auto pe_esquerdo = new Junta(-10 + x, -60 + y, z);
-    auto pe_direito = new Junta(10 + x, -60 + y, z);
+    _pe_esquerdo = new Junta(-10 + x, -60 + y, z);
+    _pe_direito = new Junta(10 + x, -60 + y, z);
 
-    tibia_esquerdo->adicione_junta(pe_esquerdo);
-    tibia_direito->adicione_junta(pe_direito);
+    _canela_esquerda->adicione_junta(_pe_esquerdo);
+    _canela_direita->adicione_junta(_pe_direito);
+}
 
-    _raiz = cabeca;
+Menu *negocio::Humanoide::get_menu()
+{
+
+}
+
+void negocio::Humanoide::set_menu(Menu *menu)
+{
+
 }
