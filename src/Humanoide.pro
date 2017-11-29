@@ -25,7 +25,7 @@ HEADERS += \
     infraestrutura/perspectiva.h \
     infraestrutura/configuracoes.h \
     infraestrutura/coordenada.h \
-    enumeradores/enummembros.h \
     infraestrutura/menu.h \
     infraestrutura/objetoComFuncoesOpenGL.h \
-    compartilhado.h
+    compartilhado.h \
+    enumeradores/enummembro.h

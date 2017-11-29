@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "compartilhado.h"
-#include "enumeradores/enummembros.h"
+#include "enumeradores/enummembro.h"
 #include "infraestrutura/utilitarios/excecao.h"
 #include "infraestrutura/janela.h"
 #include "infraestrutura/perspectiva.h"
@@ -16,32 +16,47 @@ Humanoide* humanoide = new Humanoide(0, 30, 0);
 
 void desenhe()
 {
-    humanoide->desenhe();
+    humanoide->desenhe(ROTACAO_X, ROTACAO_Y);
 }
 
 void ao_click_do_mouse(int, int, int, int)
 {
-    cerr << "Clicou!" << endl;
 }
 
 void ao_mover_mouse(int, int)
 {
-    cerr << "Moveu!" << endl;
 }
 
 void ao_clicar_tecla(unsigned char, int, int)
 {
-    cerr << "Tecla!" << endl;
 }
 
-void ao_clicar_tecla_especial(int, int, int)
+void ao_clicar_tecla_especial(int tecla, int, int)
 {
-    cerr << "Tecla especial!" << endl;
+    switch(tecla) {
+        case GLUT_KEY_LEFT:
+            ROTACAO_Y -= 1;
+            glutPostRedisplay();
+            break;
+        case GLUT_KEY_RIGHT:
+            ROTACAO_Y += 1;
+            glutPostRedisplay();
+            break;
+        case GLUT_KEY_UP:
+            ROTACAO_X -= 1;
+            glutPostRedisplay();
+            break;
+        case GLUT_KEY_DOWN:
+            ROTACAO_X += 1;
+            glutPostRedisplay();
+            break;
+    }
 }
 
 void funcao_do_menu(int operacao)
 {
     OPERACAO_EXECUTADA_DO_MENU = operacao;
+    humanoide->selecione_junta((EnumMembro)operacao);
     glutPostRedisplay();
 }
 

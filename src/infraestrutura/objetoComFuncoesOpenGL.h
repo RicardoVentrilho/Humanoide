@@ -15,8 +15,6 @@ public:
     void (*get_evento_mover_mouse)(int, int);
     void (*get_evento_clicar_tecla)(unsigned char, int, int);
     void (*get_evento_clicar_tecla_especial)(int, int, int);
-    virtual Menu* get_menu() = 0;
-    virtual void set_menu(Menu* menu) = 0;
 };
 
 }

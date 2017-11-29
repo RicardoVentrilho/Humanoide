@@ -26,6 +26,7 @@ void negocio::Osso::desenhe()
     glLineWidth(5);
     glColor3f(0.2, 0.2, 0.2);
     glBegin(GL_LINES);
+
     glVertex3f(_posicao_inicial->get_x(), _posicao_inicial->get_y(), _posicao_inicial->get_z());
     glVertex3f(_posicao_final->get_x(), _posicao_final->get_y(), _posicao_final->get_z());
     glEnd();

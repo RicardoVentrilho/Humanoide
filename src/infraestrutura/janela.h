@@ -4,7 +4,7 @@
 #include <string>
 #include <GL/glut.h>
 
-#include "enumeradores/enummembros.h"
+#include "enumeradores/enummembro.h"
 #include "infraestrutura/configuracoes.h"
 #include "infraestrutura/objetoComFuncoesOpenGL.h"
 #include "infraestrutura/perspectiva.h"

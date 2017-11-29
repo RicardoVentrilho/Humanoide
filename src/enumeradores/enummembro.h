@@ -4,7 +4,7 @@
 namespace enumeradores
 {
 
-    enum EnumMembros {
+    enum EnumMembro {
         CABECA,
         PESCOCO,
         TRONCO,
