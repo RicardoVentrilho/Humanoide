@@ -5,6 +5,7 @@
 #include "enumeradores/enummembro.h"
 #include "junta.h"
 #include "osso.h"
+#include "GL/gl.h"
 
 using namespace enumeradores;
 using namespace infraestrutura;
@@ -24,6 +25,9 @@ public:
     void desenhe(int rotacao_x, int rotacao_y);
     void selecione_junta(EnumMembro membro);
     void cria_esqueleto(int x, int y, int z);
+
+    Junta* get_cabeca();
+    Junta* get_braco_direto();
 
 private:
     Junta* _cabeca;

@@ -3,7 +3,6 @@
 
 namespace enumeradores
 {
-
     enum EnumMembro {
         CABECA,
         PESCOCO,

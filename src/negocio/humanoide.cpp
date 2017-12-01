@@ -42,7 +42,7 @@ void negocio::Humanoide::desenhe(int rotacao_x, int rotacao_y)
      glRotatef(rotacao_y, 0, 1, 0);
      glRotatef(1, 0, 0, 1);
 
-    _cabeca->desenhe(rotacao_x, rotacao_y);
+    _cabeca->desenhe();
 
     glutSwapBuffers();
 }
@@ -78,7 +78,7 @@ void negocio::Humanoide::selecione_junta(EnumMembro membro)
             break;
         case ANTEBRACO_DIREITO:
             _selecionado = _antebraco_direito;
-            _cabeca->selecione();
+            _antebraco_direito->selecione();
             break;
         case ANTEBRACO_ESQUERDO:
             _selecionado = _antebraco_esquerdo;
@@ -132,8 +132,11 @@ void negocio::Humanoide::cria_esqueleto(int x, int y, int z)
     _braco_esquerdo = new Junta(-10 + x, -5 + y, z);
     _braco_direito = new Junta(10 + x, -5 + y, z);
 
-    _braco_esquerdo->adicione_junta(new Junta(-20 + x, y, z));
-    _braco_direito->adicione_junta(new Junta(20 + x, y, z));
+    _antebraco_direito = new Junta(20 + x, y, z);
+    _antebraco_esquerdo = new Junta(-20 + x, y, z);
+
+    _braco_esquerdo->adicione_junta(_antebraco_esquerdo);
+    _braco_direito->adicione_junta(_antebraco_direito);
 
     _pescoco->adicione_junta(_braco_esquerdo);
     _pescoco->adicione_junta(_braco_direito);
@@ -165,4 +168,14 @@ void negocio::Humanoide::cria_esqueleto(int x, int y, int z)
 
     _canela_esquerda->adicione_junta(_pe_esquerdo);
     _canela_direita->adicione_junta(_pe_direito);
+}
+
+negocio::Junta *negocio::Humanoide::get_cabeca()
+{
+    return _cabeca;
+}
+
+negocio::Junta *negocio::Humanoide::get_braco_direto()
+{
+    return _braco_direito;
 }

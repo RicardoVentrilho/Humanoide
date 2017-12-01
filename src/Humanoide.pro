@@ -28,4 +28,6 @@ HEADERS += \
     infraestrutura/menu.h \
     infraestrutura/objetoComFuncoesOpenGL.h \
     compartilhado.h \
-    enumeradores/enummembro.h
+    enumeradores/enummembro.h \
+    enumeradores/enumeixo.h \
+    enumeradores/enumoperacao.h
