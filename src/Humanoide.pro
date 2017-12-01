@@ -9,14 +9,25 @@ SOURCES += \
     infraestrutura/utilitarios/excecao.cpp \
     infraestrutura/janela.cpp \
     negocio/humanoide.cpp \
-    infraestrutura/objeto3DComFuncoes.cpp \
     negocio/junta.cpp \
-    negocio/osso.cpp
+    negocio/osso.cpp \
+    infraestrutura/perspectiva.cpp \
+    infraestrutura/coordenada.cpp \
+    infraestrutura/menu.cpp \
+    infraestrutura/objetoComFuncoesOpenGL.h.cpp
 
 HEADERS += \
     infraestrutura/utilitarios/excecao.h \
     infraestrutura/janela.h \
     negocio/humanoide.h \
-    infraestrutura/objeto3DComFuncoes.h \
     negocio/junta.h \
-    negocio/osso.h
+    negocio/osso.h \
+    infraestrutura/perspectiva.h \
+    infraestrutura/configuracoes.h \
+    infraestrutura/coordenada.h \
+    infraestrutura/menu.h \
+    infraestrutura/objetoComFuncoesOpenGL.h \
+    compartilhado.h \
+    enumeradores/enummembro.h \
+    enumeradores/enumeixo.h \
+    enumeradores/enumoperacao.h
