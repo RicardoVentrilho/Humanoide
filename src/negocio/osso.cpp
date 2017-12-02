@@ -11,16 +11,6 @@ negocio::Osso::~Osso()
     ////TODO: Remover posições
 }
 
-Coordenada *negocio::Osso::get_posicao_incial()
-{
-    return _junta_inicial->get_posicao();
-}
-
-Coordenada *negocio::Osso::get_posicao_final()
-{
-    return _junta_final->get_posicao();
-}
-
 void negocio::Osso::desenhe()
 {
     glLineWidth(5);

@@ -267,13 +267,3 @@ void negocio::Humanoide::rotacione_membro(EnumEixo eixo, int angulo)
 {
     _selecionado->adicione_rotacao(eixo, angulo);
 }
-
-negocio::Junta *negocio::Humanoide::get_cabeca()
-{
-    return _cabeca;
-}
-
-negocio::Junta *negocio::Humanoide::get_braco_direto()
-{
-    return _braco_direito;
-}

@@ -31,5 +31,4 @@ HEADERS += \
     compartilhado.h \
     enumeradores/enummembro.h \
     enumeradores/enumeixo.h \
-    enumeradores/enumoperacao.h \
     infraestrutura/rotacaonoseixos.h

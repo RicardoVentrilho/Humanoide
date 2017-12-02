@@ -14,12 +14,6 @@ negocio::Junta::~Junta()
     delete _posicao;
     ////TODO: Excluir listas de ossos e juntas;
 }
-
-void negocio::Junta::adicione_junta(negocio::Junta *junta_filha)
-{
-    _juntas_adjacentes.push_back(junta_filha);
-}
-
 Coordenada *negocio::Junta::get_posicao()
 {
     return _posicao;
@@ -30,17 +24,8 @@ RotacaoNosEixos *negocio::Junta::get_rotacao()
     return _rotacao_nos_eixos;
 }
 
-void negocio::Junta::adicione_osso(negocio::Junta *junta_filha)
-{
-    Osso* osso = new Osso(this, junta_filha);
-
-    _ossos.push_back(osso);
-}
-
 void negocio::Junta::desenhe()
 {
-    desenhe_ossos();
-
     desenhe_opengl();
 }
 
@@ -57,11 +42,6 @@ void negocio::Junta::solte()
 bool negocio::Junta::esta_selecionado()
 {
     return _esta_selecionado;
-}
-
-vector<negocio::Junta *> negocio::Junta::get_juntas_adjacentes()
-{
-    return _juntas_adjacentes;
 }
 
 void negocio::Junta::adicione_rotacao(EnumEixo eixo, int angulo)
@@ -104,12 +84,4 @@ void negocio::Junta::desenhe_opengl()
     glEnd();
 
     glPopMatrix();
-}
-
-void negocio::Junta::desenhe_ossos()
-{
-    for(auto osso : _ossos)
-    {
-        osso->desenhe();
-    }
 }

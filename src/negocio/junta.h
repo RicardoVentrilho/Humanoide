@@ -22,28 +22,21 @@ class Junta
 {
 public:
     Junta(int x, int y, int z);
-    ~Junta();
-    void adicione_junta(Junta* junta_filha);
-    Coordenada* get_posicao();
+    ~Junta();    Coordenada* get_posicao();
     RotacaoNosEixos* get_rotacao();
-    void adicione_osso(Junta* junta_filha);
     void desenhe();
     void selecione();
     void solte();
     bool esta_selecionado();
-    vector<Junta*> get_juntas_adjacentes();
     void adicione_rotacao(EnumEixo eixo, int angulo);
     void aplique_rotacao(RotacaoNosEixos *rotacao);
 
 private:
-    vector<Junta*> _juntas_adjacentes;
-    vector<Osso*> _ossos;
     Coordenada* _posicao;
+    RotacaoNosEixos* _rotacao_nos_eixos;
     bool _esta_selecionado;
     int _angulo;
-    RotacaoNosEixos* _rotacao_nos_eixos;
     void desenhe_opengl();
-    void desenhe_ossos();
 };
 
 }

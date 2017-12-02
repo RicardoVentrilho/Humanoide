@@ -18,8 +18,6 @@ class Osso
 public:
     Osso(Junta* junta_inicial, Junta* junta_final);
     ~Osso();
-    Coordenada* get_posicao_incial();
-    Coordenada* get_posicao_final();
     void desenhe();
 
 private:
