@@ -24,6 +24,7 @@ public:
     void adicione_junta(Junta* junta_filha);
     Coordenada* get_posicao();
     RotacaoNosEixos* get_rotacao();
+    void adicione_osso(Junta* junta_filha);
     void desenhe();
     void selecione();
     void solte();

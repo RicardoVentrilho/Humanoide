@@ -18,10 +18,6 @@ negocio::Junta::~Junta()
 void negocio::Junta::adicione_junta(negocio::Junta *junta_filha)
 {
     _juntas_adjacentes.push_back(junta_filha);
-
-    Osso* osso = new Osso(_posicao, junta_filha->get_posicao());
-
-    _ossos.push_back(osso);
 }
 
 Coordenada *negocio::Junta::get_posicao()
@@ -32,6 +28,13 @@ Coordenada *negocio::Junta::get_posicao()
 RotacaoNosEixos *negocio::Junta::get_rotacao()
 {
     return _rotacao_nos_eixos;
+}
+
+void negocio::Junta::adicione_osso(negocio::Junta *junta_filha)
+{
+    Osso* osso = new Osso(_posicao, junta_filha->get_posicao());
+
+    _ossos.push_back(osso);
 }
 
 void negocio::Junta::desenhe()

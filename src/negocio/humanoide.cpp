@@ -192,10 +192,9 @@ void negocio::Humanoide::selecione_junta(EnumMembro membro)
 void negocio::Humanoide::cria_esqueleto(int x, int y, int z)
 {
     _cabeca = new Junta(x, 10 + y, z);
-
     _pescoco = new Junta(x, y, z);
 
-    _cabeca->adicione_junta(_pescoco);
+    _cabeca->adicione_osso(_pescoco);
 
     _braco_esquerdo = new Junta(-10 + x, -5 + y, z);
     _braco_direito = new Junta(10 + x, -5 + y, z);
@@ -203,39 +202,39 @@ void negocio::Humanoide::cria_esqueleto(int x, int y, int z)
     _antebraco_direito = new Junta(20 + x, y, z);
     _antebraco_esquerdo = new Junta(-20 + x, y, z);
 
-    _braco_esquerdo->adicione_junta(_antebraco_esquerdo);
-    _braco_direito->adicione_junta(_antebraco_direito);
+    _braco_esquerdo->adicione_osso(_antebraco_esquerdo);
+    _braco_direito->adicione_osso(_antebraco_direito);
 
-    _pescoco->adicione_junta(_braco_esquerdo);
-    _pescoco->adicione_junta(_braco_direito);
+    _pescoco->adicione_osso(_braco_esquerdo);
+    _pescoco->adicione_osso(_braco_direito);
 
     _tronco = new Junta(x, -25 + y, z);
 
-    _pescoco->adicione_junta(_tronco);
+    _pescoco->adicione_osso(_tronco);
 
     _ilio_esquerdo = new Junta(-5 + x, -25 + y, z);
     _ilio_direito = new Junta(5 + x, -25 + y, z);
 
-    _tronco->adicione_junta(_ilio_esquerdo);
-    _tronco->adicione_junta(_ilio_direito);
+    _tronco->adicione_osso(_ilio_esquerdo);
+    _tronco->adicione_osso(_ilio_direito);
 
     _coxa_esquerda = new Junta(-5 + x, -40 + y, z);
     _coxa_direita = new Junta(5 + x, -40 + y, z);
 
-    _ilio_esquerdo->adicione_junta(_coxa_esquerda);
-    _ilio_direito->adicione_junta(_coxa_direita);
+    _ilio_esquerdo->adicione_osso(_coxa_esquerda);
+    _ilio_direito->adicione_osso(_coxa_direita);
 
     _canela_esquerda = new Junta(-5 + x, -55 + y, z);
     _canela_direita = new Junta(5 + x, -55 + y, z);
 
-    _ilio_esquerdo->adicione_junta(_canela_esquerda);
-    _ilio_direito->adicione_junta(_canela_direita);
+    _ilio_esquerdo->adicione_osso(_canela_esquerda);
+    _ilio_direito->adicione_osso(_canela_direita);
 
     _pe_esquerdo = new Junta(-10 + x, -60 + y, z);
     _pe_direito = new Junta(10 + x, -60 + y, z);
 
-    _canela_esquerda->adicione_junta(_pe_esquerdo);
-    _canela_direita->adicione_junta(_pe_direito);
+    _canela_esquerda->adicione_osso(_pe_esquerdo);
+    _canela_direita->adicione_osso(_pe_direito);
 }
 
 void negocio::Humanoide::rotacione_membro(EnumEixo eixo, int angulo)
