@@ -3,6 +3,7 @@
 
 #include "infraestrutura/objetoComFuncoesOpenGL.h"
 #include "enumeradores/enummembro.h"
+#include "enumeradores/enumeixo.h"
 #include "junta.h"
 #include "osso.h"
 #include "GL/gl.h"
@@ -25,6 +26,7 @@ public:
     void desenhe(int rotacao_x, int rotacao_y);
     void selecione_junta(EnumMembro membro);
     void cria_esqueleto(int x, int y, int z);
+    void rotacione_membro(EnumEixo eixo, int angulo);
 
     Junta* get_cabeca();
     Junta* get_braco_direto();
@@ -46,6 +48,7 @@ private:
     Junta* _pe_esquerdo;
     Junta* _pe_direito;
     Junta* _selecionado;
+    EnumMembro _membro_selecionado;
 };
 
 }

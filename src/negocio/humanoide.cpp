@@ -33,16 +33,84 @@ void negocio::Humanoide::set_evento_clicar_tecla_especial(void (*funcao)(int, in
 
 void negocio::Humanoide::desenhe(int rotacao_x, int rotacao_y)
 {
-     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-     glMatrixMode(GL_MODELVIEW);
-     glLoadIdentity();
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 
-     glRotatef(rotacao_x, 1, 0, 0);
-     glRotatef(rotacao_y, 0, 1, 0);
-     glRotatef(1, 0, 0, 1);
+    glRotatef(rotacao_x, 1, 0, 0);
+    glRotatef(rotacao_y, 0, 1, 0);
+    glRotatef(1, 0, 0, 1);
 
+    glPushMatrix();
+    glColor3f(0.0, 0.0, 0.0);
+    glPointSize(15);
+
+    glPushMatrix();
+    _tronco->aplique_rotacao(_tronco->get_rotacao());
+    _pescoco->desenhe();
+
+    glPushMatrix();
+    _pescoco->aplique_rotacao(_pescoco->get_rotacao());
     _cabeca->desenhe();
+    glPopMatrix();
+
+    glPushMatrix();
+    _pescoco->aplique_rotacao(_braco_esquerdo->get_rotacao());
+    _braco_esquerdo->desenhe();
+
+    _braco_esquerdo->aplique_rotacao(_antebraco_esquerdo->get_rotacao());
+    _antebraco_esquerdo->desenhe();
+    glPopMatrix();
+
+    glPushMatrix();
+    _pescoco->aplique_rotacao(_braco_direito->get_rotacao());
+    _braco_direito->desenhe();
+
+    _braco_direito->aplique_rotacao(_antebraco_direito->get_rotacao());
+    _antebraco_direito->desenhe();
+    glPopMatrix();
+    glPopMatrix();
+
+    _tronco->desenhe();
+
+    glPushMatrix();
+    _tronco->aplique_rotacao(_ilio_direito->get_rotacao());
+    _ilio_direito->desenhe();
+
+    glPushMatrix();
+    _ilio_direito->aplique_rotacao(_coxa_direita->get_rotacao());
+    _coxa_direita->desenhe();
+
+    glPushMatrix();
+    _coxa_direita->aplique_rotacao(_canela_direita->get_rotacao());
+    _canela_direita->desenhe();
+
+    _canela_direita->aplique_rotacao(_pe_direito->get_rotacao());
+    _pe_direito->desenhe();
+    glPopMatrix();
+    glPopMatrix();
+    glPopMatrix();
+
+    glPushMatrix();
+    _tronco->aplique_rotacao(_ilio_esquerdo->get_rotacao());
+    _ilio_esquerdo->desenhe();
+
+    glPushMatrix();
+    _ilio_esquerdo->aplique_rotacao(_coxa_esquerda->get_rotacao());
+    _coxa_esquerda->desenhe();
+
+    glPushMatrix();
+    _coxa_esquerda->aplique_rotacao(_canela_esquerda->get_rotacao());
+    _canela_esquerda->desenhe();
+
+    _canela_esquerda->aplique_rotacao(_pe_esquerdo->get_rotacao());
+    _pe_esquerdo->desenhe();
+
+    glPopMatrix();
+
+    glPopMatrix();
+    glPopMatrix();
 
     glutSwapBuffers();
 }
@@ -168,6 +236,11 @@ void negocio::Humanoide::cria_esqueleto(int x, int y, int z)
 
     _canela_esquerda->adicione_junta(_pe_esquerdo);
     _canela_direita->adicione_junta(_pe_direito);
+}
+
+void negocio::Humanoide::rotacione_membro(EnumEixo eixo, int angulo)
+{
+    _selecionado->adicione_rotacao(eixo, angulo);
 }
 
 negocio::Junta *negocio::Humanoide::get_cabeca()
