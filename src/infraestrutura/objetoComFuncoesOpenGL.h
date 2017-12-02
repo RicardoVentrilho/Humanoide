@@ -1,13 +1,15 @@
 #ifndef POLIGONO_H
 #define POLIGONO_H
 
+#include "menu.h"
+
 namespace infraestrutura
 {
 
-class Objeto3DComFuncoes
+class ObjetoComFuncoesOpenGL
 {
 public:
-    Objeto3DComFuncoes();
+    ObjetoComFuncoesOpenGL();
     void (*get_desenhe)();
     void (*get_evento_mouse_click)(int, int, int, int);
     void (*get_evento_mover_mouse)(int, int);

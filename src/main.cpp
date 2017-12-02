@@ -1,52 +1,131 @@
 #include <iostream>
 
+#include "compartilhado.h"
+#include "enumeradores/enummembro.h"
 #include "infraestrutura/utilitarios/excecao.h"
 #include "infraestrutura/janela.h"
+#include "infraestrutura/perspectiva.h"
 #include "negocio/humanoide.h"
 
-
 using namespace std;
+using namespace enumeradores;
 using namespace infraestrutura;
 using namespace negocio;
 
+Humanoide* humanoide = new Humanoide(0, 30, 0);
+
 void desenhe()
 {
-    cerr << "Desenhe!" << endl;
+    humanoide->desenhe(ROTACAO_CAMERA_X, ROTACAO_CAMERA_Y);
+    cerr << "Desenhou" << endl;
 }
 
 void ao_click_do_mouse(int, int, int, int)
 {
-    cerr << "Clicou!" << endl;
 }
 
 void ao_mover_mouse(int, int)
 {
-    cerr << "Moveu!" << endl;
 }
 
-void ao_clicar_tecla(unsigned char, int, int)
+void ao_clicar_tecla(unsigned char tecla, int, int)
 {
-    cerr << "Tecla!" << endl;
+    switch (OPERACAO_EXECUTADA_DO_MENU)
+    {
+        case CABECA:
+            if(tecla == '+')
+            {
+                humanoide->get_cabeca()->adicione_angulo(5);
+                humanoide->get_cabeca()->set_rotacoes(ROTACAO_X, ROTACAO_Y, ROTACAO_Z);
+            }
+            if(tecla == '-')
+            {
+                humanoide->get_cabeca()->subtraia_angulo(5);
+            }
+            break;
+
+        case BRACO_DIREITO:
+            if(tecla == '+')
+            {
+                humanoide->get_braco_direto()->adicione_angulo(5);
+            }
+            if(tecla == '-')
+            {
+                humanoide->get_braco_direto()->subtraia_angulo(5);
+            }
+            break;
+        default:
+            break;
+    }
+
+    if(tecla == 'x')
+    {
+        ROTACAO_X = 1;
+        ROTACAO_Y = 0;
+        ROTACAO_Z = 0;
+    }
+    if(tecla == 'y')
+    {
+        ROTACAO_X = 0;
+        ROTACAO_Y = 1;
+        ROTACAO_Z = 0;
+    }
+    if(tecla == 'z')
+    {
+        ROTACAO_X = 0;
+        ROTACAO_Y = 0;
+        ROTACAO_Z = 1;
+    }
+
+    desenhe();
 }
 
-void ao_clicar_tecla_especial(int, int, int)
+void ao_clicar_tecla_especial(int tecla, int, int)
 {
-    cerr << "Tecla especial!" << endl;
+    switch(tecla) {
+        case GLUT_KEY_LEFT:
+            ROTACAO_CAMERA_Y -= 2;
+            break;
+        case GLUT_KEY_RIGHT:
+            ROTACAO_CAMERA_Y += 2;
+            break;
+        case GLUT_KEY_UP:
+            ROTACAO_CAMERA_X -= 2;
+            break;
+        case GLUT_KEY_DOWN:
+            ROTACAO_CAMERA_X += 2;
+            break;
+    }
+
+    glutPostRedisplay();
+}
+
+void funcao_do_menu(int operacao)
+{
+    OPERACAO_EXECUTADA_DO_MENU = operacao;
+    humanoide->selecione_junta((EnumMembro)operacao);
+    glutPostRedisplay();
 }
 
 int main()
 {
     try
     {
-        Janela* janela = new Janela(500, 500, "Título");
+        Janela* janela = new Janela(500, 500, "Computação Gráfica");
+        Perspectiva* perspectiva = new Perspectiva(50);
+        Menu* menu = new Menu(funcao_do_menu);
 
-        Humanoide* humanoide = new Humanoide();
+        janela->adicione_itens_no_menu(menu);
 
         humanoide->set_desenhe(desenhe);
         humanoide->set_evento_clicar_mouse(ao_click_do_mouse);
         humanoide->set_evento_mover_mouse(ao_mover_mouse);
         humanoide->set_evento_clicar_tecla(ao_clicar_tecla);
         humanoide->set_evento_clicar_tecla_especial(ao_clicar_tecla_especial);
+
+        janela->set_perspectiva(perspectiva);
+        janela->aplique_perspectiva();
+        janela->aplique_configuracao_padrao();
 
         janela->set_objeto(humanoide);
 
