@@ -6,39 +6,37 @@
 
 #include "osso.h"
 #include "infraestrutura/coordenada.h"
+#include "infraestrutura/rotacaonoseixos.h"
+#include "enumeradores/enumeixo.h"
 
 using namespace infraestrutura;
+using namespace enumeradores;
 using std::vector;
 
 namespace negocio
 {
 
+class Osso;
+
 class Junta
 {
 public:
     Junta(int x, int y, int z);
-    ~Junta();
-    void adicione_junta(Junta* junta_filha);
-    Coordenada* get_posicao();
+    ~Junta();    Coordenada* get_posicao();
+    RotacaoNosEixos* get_rotacao();
     void desenhe();
     void selecione();
     void solte();
     bool esta_selecionado();
-    vector<Junta*> get_juntas_adjacentes();
-    void set_rotacoes(GLfloat rotacao_x, GLfloat rotacao_y, GLfloat rotacao_z);
-    void subtraia_angulo(int angulo_adicional);
-    void adicione_angulo(int angulo_adicional);
+    void adicione_rotacao(EnumEixo eixo, int angulo);
+    void aplique_rotacao(RotacaoNosEixos *rotacao);
 
 private:
-    vector<Junta*> _juntas_adjacentes;
-    vector<Osso*> _ossos;
     Coordenada* _posicao;
+    RotacaoNosEixos* _rotacao_nos_eixos;
     bool _esta_selecionado;
     int _angulo;
-    GLfloat _rotacao_x, _rotacao_y, _rotacao_z;
     void desenhe_opengl();
-    void desenhe_recursivo(Junta* junta);
-    void desenhe_ossos();
 };
 
 }

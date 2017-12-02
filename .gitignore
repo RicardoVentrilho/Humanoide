@@ -72,3 +72,7 @@ Thumbs.db
 *.dll
 *.exe
 
+
+build-Humanoide-Desktop_Qt_5_7_0_GCC_64bit-Debug/\.qmake\.stash
+
+build-Humanoide-Desktop_Qt_5_7_0_GCC_64bit-Debug/Humanoide

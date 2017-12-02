@@ -14,7 +14,8 @@ SOURCES += \
     infraestrutura/perspectiva.cpp \
     infraestrutura/coordenada.cpp \
     infraestrutura/menu.cpp \
-    infraestrutura/objetoComFuncoesOpenGL.h.cpp
+    infraestrutura/objetoComFuncoesOpenGL.h.cpp \
+    infraestrutura/rotacaonoseixos.cpp
 
 HEADERS += \
     infraestrutura/utilitarios/excecao.h \
@@ -30,4 +31,4 @@ HEADERS += \
     compartilhado.h \
     enumeradores/enummembro.h \
     enumeradores/enumeixo.h \
-    enumeradores/enumoperacao.h
+    infraestrutura/rotacaonoseixos.h
