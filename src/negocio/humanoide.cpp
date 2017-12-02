@@ -49,26 +49,32 @@ void negocio::Humanoide::desenhe(int rotacao_x, int rotacao_y)
     glPushMatrix();
     _tronco->aplique_rotacao(_tronco->get_rotacao());
     _pescoco->desenhe();
+    _pescoco_com_tronco->desenhe();
 
     glPushMatrix();
     _pescoco->aplique_rotacao(_pescoco->get_rotacao());
     _cabeca->desenhe();
+    _cabeca_com_pescoco->desenhe();
     glPopMatrix();
 
     glPushMatrix();
     _pescoco->aplique_rotacao(_braco_esquerdo->get_rotacao());
     _braco_esquerdo->desenhe();
+    _pescoco_com_braco_esquerdo->desenhe();
 
     _braco_esquerdo->aplique_rotacao(_antebraco_esquerdo->get_rotacao());
     _antebraco_esquerdo->desenhe();
+    _braco_esquerdo_com_antebra_esquerdo->desenhe();
     glPopMatrix();
 
     glPushMatrix();
     _pescoco->aplique_rotacao(_braco_direito->get_rotacao());
     _braco_direito->desenhe();
+    _pescoco_com_braco_direito->desenhe();
 
     _braco_direito->aplique_rotacao(_antebraco_direito->get_rotacao());
     _antebraco_direito->desenhe();
+    _braco_direito_com_antebra_direito->desenhe();
     glPopMatrix();
     glPopMatrix();
 
@@ -77,17 +83,21 @@ void negocio::Humanoide::desenhe(int rotacao_x, int rotacao_y)
     glPushMatrix();
     _tronco->aplique_rotacao(_ilio_direito->get_rotacao());
     _ilio_direito->desenhe();
+    _tronco_com_ilio_direito->desenhe();
 
     glPushMatrix();
     _ilio_direito->aplique_rotacao(_coxa_direita->get_rotacao());
     _coxa_direita->desenhe();
+    _ilio_direito_com_coxa_direita->desenhe();
 
     glPushMatrix();
     _coxa_direita->aplique_rotacao(_canela_direita->get_rotacao());
     _canela_direita->desenhe();
+    _coxa_direta_com_canela_direita->desenhe();
 
     _canela_direita->aplique_rotacao(_pe_direito->get_rotacao());
     _pe_direito->desenhe();
+    _canela_direita_com_pe_direito->desenhe();
     glPopMatrix();
     glPopMatrix();
     glPopMatrix();
@@ -95,20 +105,22 @@ void negocio::Humanoide::desenhe(int rotacao_x, int rotacao_y)
     glPushMatrix();
     _tronco->aplique_rotacao(_ilio_esquerdo->get_rotacao());
     _ilio_esquerdo->desenhe();
+    _tronco_com_ilio_esquerdo->desenhe();
 
     glPushMatrix();
     _ilio_esquerdo->aplique_rotacao(_coxa_esquerda->get_rotacao());
     _coxa_esquerda->desenhe();
+    _ilio_esquerdo_com_coxa_esquerda->desenhe();
 
     glPushMatrix();
     _coxa_esquerda->aplique_rotacao(_canela_esquerda->get_rotacao());
     _canela_esquerda->desenhe();
+    _coxa_esquerda_com_canela_esquerda->desenhe();
 
     _canela_esquerda->aplique_rotacao(_pe_esquerdo->get_rotacao());
     _pe_esquerdo->desenhe();
-
+    _canela_esquerda_com_pe_esquerdo->desenhe();
     glPopMatrix();
-
     glPopMatrix();
     glPopMatrix();
 
@@ -194,7 +206,8 @@ void negocio::Humanoide::cria_esqueleto(int x, int y, int z)
     _cabeca = new Junta(x, 10 + y, z);
     _pescoco = new Junta(x, y, z);
 
-    _cabeca->adicione_osso(_pescoco);
+    _cabeca_com_pescoco = new Osso(_cabeca, _pescoco);
+    //_cabeca->adicione_osso(_pescoco);
 
     _braco_esquerdo = new Junta(-10 + x, -5 + y, z);
     _braco_direito = new Junta(10 + x, -5 + y, z);
@@ -202,39 +215,52 @@ void negocio::Humanoide::cria_esqueleto(int x, int y, int z)
     _antebraco_direito = new Junta(20 + x, y, z);
     _antebraco_esquerdo = new Junta(-20 + x, y, z);
 
-    _braco_esquerdo->adicione_osso(_antebraco_esquerdo);
-    _braco_direito->adicione_osso(_antebraco_direito);
+    _braco_esquerdo_com_antebra_esquerdo = new Osso(_braco_esquerdo, _antebraco_esquerdo);
+    _braco_direito_com_antebra_direito = new Osso(_braco_direito, _antebraco_direito);
+//    _braco_esquerdo->adicione_osso(_antebraco_esquerdo);
+//    _braco_direito->adicione_osso(_antebraco_direito);
 
-    _pescoco->adicione_osso(_braco_esquerdo);
-    _pescoco->adicione_osso(_braco_direito);
+    _pescoco_com_braco_esquerdo = new Osso(_pescoco, _braco_esquerdo);
+    _pescoco_com_braco_direito = new Osso(_pescoco, _braco_direito);
+//    _pescoco->adicione_osso(_braco_esquerdo);
+//    _pescoco->adicione_osso(_braco_direito);
 
     _tronco = new Junta(x, -25 + y, z);
 
-    _pescoco->adicione_osso(_tronco);
+    _pescoco_com_tronco = new Osso(_pescoco, _tronco);
+//    _pescoco->adicione_osso(_tronco);
 
     _ilio_esquerdo = new Junta(-5 + x, -25 + y, z);
     _ilio_direito = new Junta(5 + x, -25 + y, z);
 
-    _tronco->adicione_osso(_ilio_esquerdo);
-    _tronco->adicione_osso(_ilio_direito);
+    _tronco_com_ilio_esquerdo = new Osso(_tronco, _ilio_esquerdo);
+    _tronco_com_ilio_direito = new Osso(_tronco, _ilio_direito);
+//    _tronco->adicione_osso(_ilio_esquerdo);
+//    _tronco->adicione_osso(_ilio_direito);
 
     _coxa_esquerda = new Junta(-5 + x, -40 + y, z);
     _coxa_direita = new Junta(5 + x, -40 + y, z);
 
-    _ilio_esquerdo->adicione_osso(_coxa_esquerda);
-    _ilio_direito->adicione_osso(_coxa_direita);
+    _ilio_esquerdo_com_coxa_esquerda = new Osso(_ilio_esquerdo, _coxa_esquerda);
+    _ilio_direito_com_coxa_direita = new Osso(_ilio_direito, _coxa_direita);
+//    _ilio_esquerdo->adicione_osso(_coxa_esquerda);
+//    _ilio_direito->adicione_osso(_coxa_direita);
 
     _canela_esquerda = new Junta(-5 + x, -55 + y, z);
     _canela_direita = new Junta(5 + x, -55 + y, z);
 
-    _ilio_esquerdo->adicione_osso(_canela_esquerda);
-    _ilio_direito->adicione_osso(_canela_direita);
+    _coxa_esquerda_com_canela_esquerda = new Osso(_coxa_esquerda, _canela_esquerda);
+    _coxa_direta_com_canela_direita = new Osso(_coxa_direita, _canela_direita);
+//    _ilio_esquerdo->adicione_osso(_canela_esquerda);
+//    _ilio_direito->adicione_osso(_canela_direita);
 
     _pe_esquerdo = new Junta(-10 + x, -60 + y, z);
     _pe_direito = new Junta(10 + x, -60 + y, z);
 
-    _canela_esquerda->adicione_osso(_pe_esquerdo);
-    _canela_direita->adicione_osso(_pe_direito);
+    _canela_esquerda_com_pe_esquerdo = new Osso(_canela_esquerda, _pe_esquerdo);
+    _canela_direita_com_pe_direito = new Osso(_canela_direita, _pe_direito);
+//    _canela_esquerda->adicione_osso(_pe_esquerdo);
+//    _canela_direita->adicione_osso(_pe_direito);
 }
 
 void negocio::Humanoide::rotacione_membro(EnumEixo eixo, int angulo)

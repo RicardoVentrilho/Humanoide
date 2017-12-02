@@ -4,24 +4,27 @@
 #include <GL/glut.h>
 #include <GL/gl.h>
 #include "infraestrutura/coordenada.h"
+#include "negocio/junta.h"
 
 using namespace infraestrutura;
 
 namespace negocio
 {
 
+class Junta;
+
 class Osso
 {
 public:
-    Osso(Coordenada* posicao_inicial, Coordenada* posicao_final);
+    Osso(Junta* junta_inicial, Junta* junta_final);
     ~Osso();
     Coordenada* get_posicao_incial();
     Coordenada* get_posicao_final();
     void desenhe();
 
 private:
-    Coordenada* _posicao_inicial;
-    Coordenada* _posicao_final;
+    Junta* _junta_inicial;
+    Junta* _junta_final;
 };
 
 }

@@ -32,7 +32,7 @@ RotacaoNosEixos *negocio::Junta::get_rotacao()
 
 void negocio::Junta::adicione_osso(negocio::Junta *junta_filha)
 {
-    Osso* osso = new Osso(_posicao, junta_filha->get_posicao());
+    Osso* osso = new Osso(this, junta_filha);
 
     _ossos.push_back(osso);
 }
@@ -84,10 +84,6 @@ void negocio::Junta::adicione_rotacao(EnumEixo eixo, int angulo)
 
 void negocio::Junta::aplique_rotacao(RotacaoNosEixos* rotacao)
 {
-    std::cerr << "Rotação: " << _rotacao_nos_eixos->get_rotacao_no_eixo_x()
-              << "-" << _rotacao_nos_eixos->get_rotacao_no_eixo_y()
-              << "-" << _rotacao_nos_eixos->get_rotacao_no_eixo_z() << std::endl;
-
     glTranslatef(_posicao->get_x(), _posicao->get_y(), _posicao->get_z());
 
     glRotatef ((GLfloat) rotacao->get_rotacao_no_eixo_x(), 1, 0, 0);

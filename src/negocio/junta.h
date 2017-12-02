@@ -16,6 +16,8 @@ using std::vector;
 namespace negocio
 {
 
+class Osso;
+
 class Junta
 {
 public:

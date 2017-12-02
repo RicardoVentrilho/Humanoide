@@ -1,9 +1,9 @@
 #include "osso.h"
 
-negocio::Osso::Osso(Coordenada *posicao_inicial, Coordenada *posicao_final)
+negocio::Osso::Osso(Junta *junta_inicial, Junta *junta_final)
 {
-    _posicao_inicial = posicao_inicial;
-    _posicao_final = posicao_final;
+    _junta_inicial = junta_inicial;
+    _junta_final = junta_final;
 }
 
 negocio::Osso::~Osso()
@@ -13,12 +13,12 @@ negocio::Osso::~Osso()
 
 Coordenada *negocio::Osso::get_posicao_incial()
 {
-    return _posicao_inicial;
+    return _junta_inicial->get_posicao();
 }
 
 Coordenada *negocio::Osso::get_posicao_final()
 {
-    return _posicao_final;
+    return _junta_final->get_posicao();
 }
 
 void negocio::Osso::desenhe()
@@ -26,7 +26,7 @@ void negocio::Osso::desenhe()
     glLineWidth(5);
     glColor3f(0.2, 0.2, 0.2);
     glBegin(GL_LINES);
-    glVertex3f(_posicao_inicial->get_x(), _posicao_inicial->get_y(), _posicao_inicial->get_z());
-    glVertex3f(_posicao_final->get_x(), _posicao_final->get_y(), _posicao_final->get_z());
+    glVertex3f(_junta_inicial->get_posicao()->get_x(), _junta_inicial->get_posicao()->get_y(), _junta_inicial->get_posicao()->get_z());
+    glVertex3f(_junta_final->get_posicao()->get_x(), _junta_final->get_posicao()->get_y(), _junta_final->get_posicao()->get_z());
     glEnd();
 }
